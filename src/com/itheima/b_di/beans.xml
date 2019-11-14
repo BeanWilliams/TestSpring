@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here
+    	<bean> 配置的需要创建的对象
+    		id：用于之后从spring容器获得实例时使用的
+    		class：需要创建实例的全限定类名
+    	模拟spring执行过程
+			创建service实例：BookService bookService = new BookServiceImpl()  >IoC 
+			创建dao实例：BookDao bookDao = new BookDaoImple()				>IoC
+			将dao设置给service：bookService.setBookDao(bookDao);			>DI  
+			<property>用于属性注入
+				name： bean的属性名，通过setter方法获得的
+					setBookDao **>BookDao  **>bookDao
+				ref：另一个bean的id值的引用
+    -->
+   
+	<!-- 创建service -->      <!-- com.itheima.b_di.BookServiceImpl -->
+	<bean id = "bookServiceId" class="com.itheima.b_di.BookServiceImpl"> 
+		<property name = "bookDao" ref = "bookDaoId"></property>
+		<property name = "bookDao2" ref = "bookDaoId"></property>
+		<property name = "studentDao" ref = "studentDaoId"></property>
+	</bean>
+	 
+	<!-- 创建dao实例 -->
+	<bean id = "bookDaoId" class="com.itheima.b_di.BookDaoImpl"></bean>
+	<bean id = "studentDaoId" class = "com.itheima.b_di.StudentDaoImpl"></bean>
+</beans>
