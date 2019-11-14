@@ -16,7 +16,7 @@ public class TestFactory {
 		userService.addUser();
 	}
 	
-
+	//修改Test，github传输
 	@Test
 	public void demo02() {
 		//spring工厂
